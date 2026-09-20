@@ -10,35 +10,18 @@ if str(src_dir) not in sys.path:
 # Import df created in ds_pipeline
 from ds_pipeline import df
 
+# Step 1: Separate features (X) and target variable (y)
+X = df.drop(columns=["MedHouseVal"])
+y = df["MedHouseVal"]
 
-def split_data(data, target_col="MedHouseVal", test_size=0.2, random_state=42):
-    """
-    Separates features and target variable, then performs train/test split.
+# Step 2: Train / test split (80% train, 20% test)
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
 
-    Parameters:
-        data (pd.DataFrame): Dataset containing features and target column.
-        target_col (str): Column name of target variable (default: 'MedHouseVal').
-        test_size (float): Proportion for test split (default: 0.2).
-        random_state (int): Random seed for reproducibility (default: 42).
-
-    Returns:
-        tuple: (X_train, X_test, y_train, y_test)
-    """
-    # Separate training features (X) from target variable (y)
-    X = data.drop(columns=[target_col])
-    y = data[target_col]
-
-    # Perform train/test split
-    return train_test_split(X, y, test_size=test_size, random_state=random_state)
-
-
-# Execute train/test split
-X_train, X_test, y_train, y_test = split_data(df)
-
-# Quick check
+# Step 3: Quick check of shapes
 print("\n--- Train / Test Split Summary ---")
 print(f"X_train shape: {X_train.shape}")
 print(f"X_test shape:  {X_test.shape}")
 print(f"y_train shape: {y_train.shape}")
 print(f"y_test shape:  {y_test.shape}")
-
