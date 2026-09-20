@@ -1,5 +1,8 @@
+# [INACTIVE] Preserved for project history/reference.
+# The complete, active machine learning workflow is now unified in src/ds_pipeline.py.
+
 from sklearn.neural_network import MLPRegressor
-from train_test_split import X_train, y_train
+from train_test_split_inactive import X_train, y_train
 
 # Create the MLP regression model
 model = MLPRegressor(

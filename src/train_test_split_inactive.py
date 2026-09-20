@@ -1,3 +1,6 @@
+# [INACTIVE] Preserved for project history/reference.
+# The complete, active machine learning workflow is now unified in src/ds_pipeline.py.
+
 import sys
 from pathlib import Path
 from sklearn.model_selection import train_test_split
